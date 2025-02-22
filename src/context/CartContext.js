@@ -4,18 +4,15 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-    const [notification, setNotification] = useState(null);
 
     const addToCart = (event) => {
-        setCart((prev) => [...prev, event]);
-        setNotification(`${event.name} added to cart!`);
-        setTimeout(() => setNotification(null), 2000);
+        setCart((prev) => [...prev, event]); // ✅ Adds event to cart
     };
 
-    const clearCart = () => setCart([]);
+    const clearCart = () => setCart([]); // ✅ Clears cart after checkout
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, clearCart, notification }}>
+        <CartContext.Provider value={{ cart, addToCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

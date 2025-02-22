@@ -1,18 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Container, Typography, Button, Grid, Card, CardMedia, CardContent } from "@mui/material";
+import React, { useState } from "react";
+import { Container, Typography, Button, Grid, Card, CardMedia, CardContent, Box } from "@mui/material";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import "../assets/styles.css"; // Import global styles
+import { eventsData } from "../data"; // ✅ Import local data
+import "../assets/styles.css";
 
 const Home = () => {
-    const [events, setEvents] = useState([]);
-
-    // Fetch events from the backend
-    useEffect(() => {
-        axios.get("http://localhost:5001/events")
-            .then((response) => setEvents(response.data))
-            .catch((error) => console.error("Error fetching events:", error));
-    }, []);
+    const [events] = useState(eventsData);
 
     return (
         <div className="home-container">
@@ -25,14 +18,16 @@ const Home = () => {
                     <Typography variant="h5" className="hero-subtitle">
                         Concerts, Sports, Comedy & More - Book Your Tickets Now
                     </Typography>
-                    <div className="hero-buttons">
+
+                    {/* Button Container with Proper Spacing & Visibility */}
+                    <Box className="hero-buttons">
                         <Button variant="contained" color="primary" size="large" component={Link} to="/events">
                             View All Events
                         </Button>
                         <Button variant="outlined" color="secondary" size="large" component={Link} to="/register">
                             Sign Up Now
                         </Button>
-                    </div>
+                    </Box>
                 </Container>
             </div>
 
@@ -42,16 +37,18 @@ const Home = () => {
                     🎭 Upcoming Events
                 </Typography>
                 <Grid container spacing={3} justifyContent="center">
-                    {events.slice(0, 3).map((event) => ( // Show only 3 events
+                    {events.slice(0, 3).map((event) => (
                         <Grid item xs={12} sm={6} md={4} key={event.id}>
                             <Card className="event-card">
-                                <CardMedia component="img" height="200" image={event.image} alt={event.name} />
+                                <CardMedia component="img" className="event-image" image={event.image} alt={event.name} />
                                 <CardContent>
-                                    <Typography variant="h5">{event.name}</Typography>
-                                    <Typography variant="subtitle1">📅 {event.date}</Typography>
-                                    <Button variant="contained" color="primary" component={Link} to={`/events/${event.id}`}>
-                                        Book Now
-                                    </Button>
+                                    <Typography variant="h5" className="event-title">{event.name}</Typography>
+                                    <Typography variant="subtitle1" className="event-date">📅 {event.date}</Typography>
+                                    <Box display="flex" justifyContent="center" mt={2}>
+                                        <Button variant="contained" color="primary" component={Link} to={`/events/${event.id}`}>
+                                            Book Now
+                                        </Button>
+                                    </Box>
                                 </CardContent>
                             </Card>
                         </Grid>

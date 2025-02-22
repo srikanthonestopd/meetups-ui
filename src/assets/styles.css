@@ -175,3 +175,231 @@ body {
 .auth-footer a:hover {
     text-decoration: underline;
 }
+
+/* Featured Events Section */
+.featured-events {
+    padding: 50px 20px;
+    background: #f8f9fa;
+}
+
+/* Event Cards */
+.event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+/* Event Image - Fixed Size */
+.event-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Event Content */
+.event-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Event Date */
+.event-date {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Centering Button */
+.event-content button {
+    margin-top: 10px;
+}
+
+/* Event Details Page */
+.event-details-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Event Image */
+.event-details-image {
+    width: 100%;
+    max-width: 600px; /* ✅ Ensures image is not too large */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; /* Centers the image */
+    border-radius: 10px;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Event Description */
+.event-description {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+}
+
+/* Centering Quantity Input */
+.event-details-container .MuiTextField-root {
+    margin-bottom: 15px;
+}
+
+/* Buy Tickets Button */
+.buy-button {
+    font-size: 18px;
+    padding: 12px 24px;
+    margin-top: 10px;
+}
+/* Event Details Page */
+.event-details-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Event Image */
+.event-details-image {
+    width: 100%;
+    max-width: 600px; /* ✅ Ensures image is not too large */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px; /* Centers the image */
+    border-radius: 10px;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Centered Description Box */
+.event-description-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 20px;
+}
+
+/* Event Description */
+.event-description {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Buy Tickets Button */
+.buy-button {
+    font-size: 18px;
+    padding: 12px 24px;
+    margin-top: 10px;
+}
+
+/* Hero Section Button Spacing */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ✅ Adds space between buttons */
+    margin-top: 20px; /* ✅ Adds margin above buttons */
+}
+
+
+/* Hero Section Button Container */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ✅ Adds space between buttons */
+    margin-top: 20px; /* ✅ Adds margin above buttons */
+    flex-wrap: wrap; /* ✅ Ensures buttons don’t disappear on small screens */
+}
+
+/* Fix "Sign Up Now" Button Visibility */
+.hero-buttons .MuiButton-outlinedSecondary {
+    border: 2px solid white;
+    color: white;
+}
+
+.hero-buttons .MuiButton-outlinedSecondary:hover {
+    background: white;
+    color: black;
+}
+
+/* Events Page Container */
+.events-container {
+    padding: 40px 20px;
+    background: #f9f9f9;
+}
+
+/* Event Cards */
+.event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+/* Event Image - Fixed Size */
+.event-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Event Content */
+.event-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Event Date */
+.event-date {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Centering Button */
+.event-content button {
+    width: 80%;
+    margin-top: 10px;
+}

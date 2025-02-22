@@ -1,22 +1,20 @@
 import React from "react";
-import { Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
+import { Card, CardMedia, CardContent, Typography, Button, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const EventCard = ({ event }) => (
-    <Card sx={{ maxWidth: 345, margin: "20px", boxShadow: 3 }} className="event-card">
-        <CardMedia
-            component="img"
-            height="200"
-            image={event.image}
-            alt={event.name}
-        />
-        <CardContent>
-            <Typography variant="h5" gutterBottom>{event.name}</Typography>
-            <Typography variant="subtitle1">📅 {event.date}</Typography>
-            <Typography variant="h6">💰 ${event.price}</Typography>
-            <Button variant="contained" color="primary" component={Link} to={`/events/${event.id}`}>
-                View Details
-            </Button>
+    <Card className="event-card">
+        <CardMedia component="img" className="event-image" image={event.image} alt={event.name} />
+        <CardContent className="event-content">
+            <Typography variant="h5" className="event-title">{event.name}</Typography>
+            <Typography variant="subtitle1" className="event-date">📅 {event.date}</Typography>
+
+            {/* ✅ Properly Center the Button */}
+            <Box display="flex" justifyContent="center" mt={2}>
+                <Button variant="contained" color="primary" component={Link} to={`/events/${event.id}`}>
+                    View Details
+                </Button>
+            </Box>
         </CardContent>
     </Card>
 );
