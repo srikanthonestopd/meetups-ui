@@ -114,3 +114,64 @@ body {
         height: 50vh;
     }
 }
+
+/* AUTH PAGES (Login & Register) */
+.auth-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Backgrounds */
+.login-bg {
+    background: url("/public/images/login-bg.jpg") no-repeat center center/cover;
+}
+
+.register-bg {
+    background: url("/public/images/register-bg.jpg") no-repeat center center/cover;
+}
+
+/* Form Box */
+.auth-box {
+    width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.auth-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form Fields */
+.auth-box .MuiTextField-root {
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.auth-button {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 0;
+}
+
+.auth-footer {
+    margin-top: 10px;
+}
+.auth-footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.auth-footer a:hover {
+    text-decoration: underline;
+}

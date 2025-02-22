@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Container, TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, Typography, Paper } from "@mui/material";
+import "../assets/styles.css"; // Import global styles
 
 const Register = () => {
     const [user, setUser] = useState({ name: "", email: "", password: "" });
@@ -18,13 +19,36 @@ const Register = () => {
     };
 
     return (
-        <Container>
-            <Typography variant="h4">Register</Typography>
-            <TextField label="Name" fullWidth margin="normal" onChange={(e) => setUser({ ...user, name: e.target.value })} />
-            <TextField label="Email" fullWidth margin="normal" onChange={(e) => setUser({ ...user, email: e.target.value })} />
-            <TextField label="Password" type="password" fullWidth margin="normal" onChange={(e) => setUser({ ...user, password: e.target.value })} />
-            <Button variant="contained" color="primary" onClick={handleRegister}>Register</Button>
-        </Container>
+        <div className="auth-container register-bg">
+            <Paper className="auth-box">
+                <Typography variant="h4" className="auth-title">Sign Up</Typography>
+                <TextField
+                    label="Full Name"
+                    fullWidth
+                    margin="normal"
+                    onChange={(e) => setUser({ ...user, name: e.target.value })}
+                />
+                <TextField
+                    label="Email"
+                    fullWidth
+                    margin="normal"
+                    onChange={(e) => setUser({ ...user, email: e.target.value })}
+                />
+                <TextField
+                    label="Password"
+                    type="password"
+                    fullWidth
+                    margin="normal"
+                    onChange={(e) => setUser({ ...user, password: e.target.value })}
+                />
+                <Button variant="contained" color="primary" fullWidth onClick={handleRegister} className="auth-button">
+                    Sign Up
+                </Button>
+                <Typography variant="body1" className="auth-footer">
+                    Already have an account? <Link to="/login">Login</Link>
+                </Typography>
+            </Paper>
+        </div>
     );
 };
 
