@@ -5,8 +5,6 @@ import { useCart } from "../context/CartContext";
 import { generateTicketID } from "../utils/TicketUtils";
 import BarcodeGenerator from "../components/BarcodeGenerator";
 
-
-
 const PaymentPage = () => {
     const location = useLocation();
     const { clearCart, cart } = useCart();
@@ -29,10 +27,22 @@ const PaymentPage = () => {
             return;
         }
 
+        // ✅ Group tickets by event ID
+        const eventQuantities = cart.reduce((acc, event) => {
+            if (!acc[event.id]) {
+                acc[event.id] = { ...event, quantity: 1 };
+            } else {
+                acc[event.id].quantity += 1;
+            }
+            return acc;
+        }, {});
+
+        const uniqueTickets = Object.values(eventQuantities);
+
         const ticketDetails = {
             id: generateTicketID(),
             name: paymentInfo.fullName,
-            events: cart,
+            events: uniqueTickets,
             total: totalAmount,
             date: new Date().toLocaleDateString()
         };
@@ -73,18 +83,21 @@ const PaymentPage = () => {
                     <Typography variant="h6">Date: {ticket.date}</Typography>
                     <Typography variant="h6">Total: ${ticket.total}</Typography>
 
+                    {/* ✅ Show tickets with quantity & unique barcodes */}
                     {ticket.events.map((event, index) => (
-                        <Box key={index} sx={{ marginBottom: 2 }}>
+                        <Box key={index} sx={{ marginBottom: 3, borderBottom: "1px solid #ddd", paddingBottom: 2 }}>
                             <Typography variant="h6">{event.name}</Typography>
                             <Typography>📅 {event.date}</Typography>
-                            <Typography>💰 ${event.price}</Typography>
+                            <Typography>🎟️ Quantity: {event.quantity}</Typography>
+                            <Typography>💰 ${event.price} per ticket</Typography>
+                            <Typography>🔢 Total: ${(event.price * event.quantity).toFixed(2)}</Typography>
+
+                            {/* ✅ Generate Unique Barcode for Each Ticket */}
+                            <Box display="flex" justifyContent="center" mt={2}>
+                                <BarcodeGenerator value={`${ticket.id}-${event.id}`} />
+                            </Box>
                         </Box>
                     ))}
-
-                    {/* ✅ Generate Barcode Based on Ticket ID */}
-                    <Box display="flex" justifyContent="center" mt={2}>
-                        <BarcodeGenerator value={ticket.id} />
-                    </Box>
 
                     <Button variant="contained" color="primary" onClick={handlePrint} sx={{ marginTop: 2 }}>
                         Print Ticket
