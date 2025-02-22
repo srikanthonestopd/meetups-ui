@@ -8,7 +8,27 @@ import BarcodeGenerator from "../components/BarcodeGenerator";
 const PaymentPage = () => {
     const location = useLocation();
     const { clearCart, cart } = useCart();
-    const totalAmount = location.state?.totalAmount || 0;
+
+    const TAX_RATE = 0.085;
+    const SERVICE_FEE = 0.015;
+
+    // ✅ Group tickets by event ID
+    const eventQuantities = cart.reduce((acc, event) => {
+        if (!acc[event.id]) {
+            acc[event.id] = { ...event, quantity: 1 };
+        } else {
+            acc[event.id].quantity += 1;
+        }
+        return acc;
+    }, {});
+
+    const uniqueTickets = Object.values(eventQuantities);
+
+    // ✅ Calculate Total Amount Dynamically
+    const subtotal = uniqueTickets.reduce((total, event) => total + event.price * event.quantity, 0);
+    const tax = subtotal * TAX_RATE;
+    const serviceFee = subtotal * SERVICE_FEE;
+    const totalAmount = subtotal + tax + serviceFee;
 
     const [paymentInfo, setPaymentInfo] = useState({
         fullName: "",
@@ -27,23 +47,11 @@ const PaymentPage = () => {
             return;
         }
 
-        // ✅ Group tickets by event ID
-        const eventQuantities = cart.reduce((acc, event) => {
-            if (!acc[event.id]) {
-                acc[event.id] = { ...event, quantity: 1 };
-            } else {
-                acc[event.id].quantity += 1;
-            }
-            return acc;
-        }, {});
-
-        const uniqueTickets = Object.values(eventQuantities);
-
         const ticketDetails = {
             id: generateTicketID(),
             name: paymentInfo.fullName,
             events: uniqueTickets,
-            total: totalAmount,
+            total: totalAmount.toFixed(2),
             date: new Date().toLocaleDateString()
         };
 
@@ -60,7 +68,7 @@ const PaymentPage = () => {
             {!ticket ? (
                 <>
                     <Typography variant="h4" gutterBottom>💳 Payment</Typography>
-                    <Typography variant="h5">Total Amount: ${totalAmount}</Typography>
+                    <Typography variant="h5">Total Amount: ${totalAmount.toFixed(2)}</Typography>
 
                     <TextField fullWidth label="Full Name" margin="normal" onChange={(e) => setPaymentInfo({ ...paymentInfo, fullName: e.target.value })} />
                     <TextField fullWidth label="Billing Address" margin="normal" onChange={(e) => setPaymentInfo({ ...paymentInfo, billingAddress: e.target.value })} />
@@ -90,7 +98,7 @@ const PaymentPage = () => {
                             <Typography>📅 {event.date}</Typography>
                             <Typography>🎟️ Quantity: {event.quantity}</Typography>
                             <Typography>💰 ${event.price} per ticket</Typography>
-                            <Typography>🔢 Total: ${(event.price * event.quantity).toFixed(2)}</Typography>
+                            <Typography>🔢 Total $ including taxes: ${(event.price * event.quantity).toFixed(2)}</Typography>
 
                             {/* ✅ Generate Unique Barcode for Each Ticket */}
                             <Box display="flex" justifyContent="center" mt={2}>
