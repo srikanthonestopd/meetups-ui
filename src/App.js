@@ -4,13 +4,13 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
 import CartPage from "./pages/CartPage";
-import CheckoutPage from "./pages/CheckoutPage"; // ✅ Import Checkout Page
-import PaymentPage from "./pages/PaymentPage"; // ✅ Import Payment Page
+import CheckoutPage from "./pages/CheckoutPage";
+import PaymentPage from "./pages/PaymentPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
-import PrivateRoute from "./components/PrivateRoute"; // ✅ Import Private Route
+import Footer from "./components/Footer"; // ✅ Import Footer
 
 const App = () => {
     return (
@@ -24,11 +24,10 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/cart" element={<CartPage />} />
-
-                    {/* ✅ Protect Checkout & Payment Pages */}
-                    <Route path="/checkout" element={<PrivateRoute><CheckoutPage /></PrivateRoute>} />
-                    <Route path="/payment" element={<PrivateRoute><PaymentPage /></PrivateRoute>} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/payment" element={<PaymentPage />} />
                 </Routes>
+                <Footer /> {/* ✅ Add Footer Below Routes */}
             </Router>
         </CartProvider>
     );

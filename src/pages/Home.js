@@ -2,18 +2,28 @@ import React, { useState } from "react";
 import { Container, Typography, Button, Grid, Card, CardMedia, CardContent, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { eventsData } from "../data";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import VisibilityIcon from '@mui/icons-material/Visibility'; // 👀 Icon for views
+import PeopleIcon from '@mui/icons-material/People'; // 👥 Icon for attendees
 import "../assets/styles.css";
 
 const Home = () => {
-    const [events] = useState(eventsData);
-    const user = JSON.parse(localStorage.getItem("user")); // ✅ Get logged-in user
+    const [events, setEvents] = useState(eventsData);
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    const handleLike = (eventId) => {
+        setEvents((prevEvents) =>
+            prevEvents.map((event) =>
+                event.id === eventId ? { ...event, likes: Number(event.likes || 0) + 1 } : event
+            )
+        );
+    };
 
     return (
         <div className="home-container">
             {/* Hero Section */}
             <div className="hero-section">
                 <Container>
-                    {/* ✅ Show User Name If Logged In */}
                     {user ? (
                         <Typography variant="h2" className="hero-user">
                             Hi, {user.name}! 👋
@@ -28,7 +38,6 @@ const Home = () => {
                         Concerts, Sports, Comedy & More - Book Your Tickets Now
                     </Typography>
 
-                    {/* ✅ Hide "Sign Up" Button If Logged In */}
                     <Box className="hero-buttons">
                         <Button variant="contained" color="primary" size="large" component={Link} to="/events">
                             View All Events
@@ -54,10 +63,31 @@ const Home = () => {
                                 <CardMedia component="img" className="event-image" image={event.image} alt={event.name} />
                                 <CardContent>
                                     <Typography variant="h5" className="event-title">{event.name}</Typography>
-                                    <Typography variant="subtitle1" className="event-date">📅 {event.date}</Typography>
+
+                                    {/* ✅ Stats in One Line */}
+                                    <Box className="event-stats">
+                                        <Typography variant="subtitle1" display="flex" alignItems="center">
+                                            <VisibilityIcon fontSize="small" /> {event.views}
+                                        </Typography>
+                                        <Typography variant="subtitle1" display="flex" alignItems="center">
+                                            <FavoriteIcon fontSize="small" /> {event.likes}
+                                        </Typography>
+                                        <Typography variant="subtitle1" display="flex" alignItems="center">
+                                            <PeopleIcon fontSize="small" /> {event.attendees}
+                                        </Typography>
+                                    </Box>
+
+                                    {/* Like Button */}
+                                    <Box display="flex" justifyContent="center" mt={1}>
+                                        <Button startIcon={<FavoriteIcon />} variant="outlined" color="secondary" onClick={() => handleLike(event.id)}>
+                                            Like
+                                        </Button>
+                                    </Box>
+
+                                    {/* View Details Button */}
                                     <Box display="flex" justifyContent="center" mt={2}>
                                         <Button variant="contained" color="primary" component={Link} to={`/events/${event.id}`}>
-                                            Book Now
+                                            View Details
                                         </Button>
                                     </Box>
                                 </CardContent>

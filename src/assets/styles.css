@@ -509,3 +509,414 @@ body {
         height: 50vh;
     }
 }
+
+/* Featured Events Section */
+.featured-events {
+    padding: 50px 20px;
+    background: #f8f9fa;
+}
+
+/* Event Cards */
+.event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+}
+
+/* Event Image - Fixed Size */
+.event-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Event Content */
+.event-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Event Title */
+.event-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Event Stats */
+.event-card .MuiTypography-subtitle1 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+/* Centering Buttons */
+.event-content button {
+    margin-top: 10px;
+    width: 80%;
+}
+
+/* Event Stats - All in One Line */
+.event-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+/* Event Stats Icons */
+.event-stats .MuiTypography-subtitle1 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* ✅ Hero Section (Same as Home Page) */
+.hero-section {
+    position: relative;
+    background: url("/public/images/home-bg.jpg") no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* Dark Overlay */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Hero Title */
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Hero Subtitle */
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* ✅ Logo Styling */
+.hero-logo {
+    margin-top: 20px;
+}
+
+.event-logo {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+/* ✅ Event Stats (One Line) */
+.event-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.event-stats .MuiTypography-subtitle1 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Event Stats - Keep Counters in One Line with Equal Spacing */
+.event-stats {
+    display: flex;
+    width: 85%;
+    justify-content: space-around; /* ✅ Ensures equal spacing */
+    align-items: center;
+    padding: 8px 12px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Event Stats Typography (For Consistency) */
+.event-stats .MuiTypography-subtitle1 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* ✅ Event Details - Styled Date & Price */
+.event-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9; /* Light gray background */
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-top: 8px;
+}
+
+.event-date, .event-price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333; /* Darker text for contrast */
+}
+
+/* ✅ Hero Section - Consistent with Home Page */
+.hero-section {
+    position: relative;
+    background: url("/public/images/home-bg.jpg") no-repeat center center/cover;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    z-index: 1;
+}
+
+/* Dark Overlay */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* ✅ Date & Price Section */
+.event-info {
+    display: flex;
+    justify-content: space-between; /* ✅ Properly aligns Date & Price */
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.event-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ✅ Stats Section (One Line) */
+.event-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #eef2f5;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.event-stats-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* ✅ Image Styling */
+.event-details-image {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+
+/* ✅ Recommended Events Sidebar */
+.recommendation-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+/* ✅ Recommended Events Sidebar - Below Hero Image */
+.recommendation-section {
+    margin-top: 50px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Recommended Event Cards */
+.recommendation-card {
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.recommendation-card:hover {
+    transform: scale(1.05);
+}
+
+/* ✅ Footer Styling */
+.footer {
+    background: #222;
+    color: white;
+    padding: 40px 0;
+    margin-top: 40px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffcc00;
+}
+
+/* ✅ Footer Icons */
+.footer-icon {
+    margin-right: 8px;
+}
+
+/* ✅ Social Media Icons */
+.footer-social {
+    text-align: center;
+}
+
+.footer-social .MuiIconButton-root {
+    color: white;
+}
+
+.footer-social .MuiIconButton-root:hover {
+    color: #ffcc00;
+}
+
+/* ✅ Pricing Details Section */
+.pricing-details {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: center;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-details h6 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.total-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #d32f2f; /* 🔴 Highlight total price */
+}
+
+/* ✅ Cart Animation (Flying Ticket) */
+.cart-animating {
+    position: relative;
+    animation: flyToCart 0.8s ease-in-out forwards;
+}
+
+@keyframes flyToCart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ✅ Recommended Events Sidebar */
+.recommendation-section {
+    margin-top: 50px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ✅ Cart Animation (Flying Ticket) */
+.cart-animating {
+    position: relative;
+    animation: flyToCart 0.8s ease-in-out forwards;
+}
+
+@keyframes flyToCart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) scale(0);
+        opacity: 0;
+    }
+}

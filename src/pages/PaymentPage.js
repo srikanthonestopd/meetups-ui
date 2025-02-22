@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Container, Typography, TextField, Button, Box, Paper } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import { generateTicketID } from "../utils/TicketUtils";
@@ -9,7 +9,6 @@ import BarcodeGenerator from "../components/BarcodeGenerator";
 
 const PaymentPage = () => {
     const location = useLocation();
-    const navigate = useNavigate();
     const { clearCart, cart } = useCart();
     const totalAmount = location.state?.totalAmount || 0;
 
