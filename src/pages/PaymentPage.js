@@ -3,7 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Typography, TextField, Button, Box, Paper } from "@mui/material";
 import { useCart } from "../context/CartContext";
 import { generateTicketID } from "../utils/TicketUtils";
-import Barcode from "react-barcode"; // ✅ Import Barcode
+import BarcodeGenerator from "../components/BarcodeGenerator";
+
+
 
 const PaymentPage = () => {
     const location = useLocation();
@@ -82,7 +84,7 @@ const PaymentPage = () => {
 
                     {/* ✅ Generate Barcode Based on Ticket ID */}
                     <Box display="flex" justifyContent="center" mt={2}>
-                        <Barcode value={ticket.id} />
+                        <BarcodeGenerator value={ticket.id} />
                     </Box>
 
                     <Button variant="contained" color="primary" onClick={handlePrint} sx={{ marginTop: 2 }}>
