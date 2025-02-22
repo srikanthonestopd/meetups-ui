@@ -52,14 +52,14 @@ export const eventsData = [
 export const usersData = [
     {
         id: 1,
-        name: "John Doe",
-        email: "john@example.com",
+        name: "Srikanth Singireddy",
+        email: "srikanth@onestopd.com",
         password: "password123"
     },
     {
         id: 2,
-        name: "Jane Smith",
-        email: "jane@example.com",
+        name: "Donald Trump",
+        email: "trump@onestopd.com",
         password: "mypassword"
     }
 ];

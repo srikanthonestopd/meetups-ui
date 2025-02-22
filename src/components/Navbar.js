@@ -1,25 +1,29 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const isAuthenticated = !!localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user")); // ✅ Get user from local storage
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
+        localStorage.removeItem("user"); // ✅ Remove user from local storage
         navigate("/login");
     };
 
     return (
         <AppBar position="static">
             <Toolbar>
-                <Typography variant="h6" sx={{ flexGrow: 1 }}>🎟️ Meetups </Typography>
+                <Typography variant="h6" sx={{ flexGrow: 1 }}>🎟️ TicketMaster</Typography>
                 <Button color="inherit" component={Link} to="/">Home</Button>
                 <Button color="inherit" component={Link} to="/events">Events</Button>
-                {isAuthenticated ? (
+
+                {user ? (
                     <>
-                        <Button color="inherit" component={Link} to="/cart">Cart</Button>
+                        {/* ✅ Show Welcome Message */}
+                        <Typography variant="body1" sx={{ marginRight: 2 }}>
+                            Hi, {user.name}! 👋
+                        </Typography>
                         <Button color="inherit" onClick={handleLogout}>Logout</Button>
                     </>
                 ) : (
