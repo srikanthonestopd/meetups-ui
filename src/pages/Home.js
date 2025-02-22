@@ -1,32 +1,43 @@
 import React, { useState } from "react";
 import { Container, Typography, Button, Grid, Card, CardMedia, CardContent, Box } from "@mui/material";
 import { Link } from "react-router-dom";
-import { eventsData } from "../data"; // ✅ Import local data
+import { eventsData } from "../data";
 import "../assets/styles.css";
 
 const Home = () => {
     const [events] = useState(eventsData);
+    const user = JSON.parse(localStorage.getItem("user")); // ✅ Get logged-in user
 
     return (
         <div className="home-container">
             {/* Hero Section */}
             <div className="hero-section">
                 <Container>
-                    <Typography variant="h2" className="hero-title">
-                        🎟️ Experience the Best Events!
-                    </Typography>
+                    {/* ✅ Show User Name If Logged In */}
+                    {user ? (
+                        <Typography variant="h2" className="hero-user">
+                            Hi, {user.name}! 👋
+                        </Typography>
+                    ) : (
+                        <Typography variant="h2" className="hero-title">
+                            🎟️ Experience the Best Events!
+                        </Typography>
+                    )}
+
                     <Typography variant="h5" className="hero-subtitle">
                         Concerts, Sports, Comedy & More - Book Your Tickets Now
                     </Typography>
 
-                    {/* Button Container with Proper Spacing & Visibility */}
+                    {/* ✅ Hide "Sign Up" Button If Logged In */}
                     <Box className="hero-buttons">
                         <Button variant="contained" color="primary" size="large" component={Link} to="/events">
                             View All Events
                         </Button>
-                        <Button variant="outlined" color="secondary" size="large" component={Link} to="/register">
-                            Sign Up Now
-                        </Button>
+                        {!user && (
+                            <Button variant="outlined" color="secondary" size="large" component={Link} to="/register">
+                                Sign Up Now
+                            </Button>
+                        )}
                     </Box>
                 </Container>
             </div>
